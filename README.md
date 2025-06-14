@@ -2,7 +2,7 @@
   <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="100"/>
   <h1>💻 Juicebox OS</h1>
   <h3>🧃 A full fake Operating System — running entirely in your browser</h3>
-  <p>Built with ❤️ by a team of students who wanted to rebuild Windows 98... for fun.</p>
+  <p>Built with ❤️ by a team of engineering students from Middlesex University Dubai.</p>
   
   <a href="https://github.com/Anushdcosta/juicebox-os/stargazers">
     <img src="https://img.shields.io/github/stars/Anushdcosta/juicebox-os?style=for-the-badge&color=yellow" alt="Stars"/>
