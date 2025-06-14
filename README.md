@@ -30,7 +30,7 @@ You’ll find Clippy, a BSOD generator, and even the ability to fake viruses for
 ## 🚀 Live Demo (Coming Soon)
 
 Want to test it? A live deployment will be hosted here:
-🔗 **https://juicebox-os.vercel.app** (placeholder — let me know if you want setup help)
+🔗 **https://juicebox-os.vercel.app**
 
 ---
 
