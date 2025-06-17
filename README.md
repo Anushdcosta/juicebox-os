@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="100"/>
+  <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="300"/>
   <h1>💻 Juicebox OS</h1>
   <h3>🧃 A full fake Operating System — running entirely in your browser</h3>
   <p>Built with ❤️ by a team of engineering students from Middlesex University Dubai.</p>
