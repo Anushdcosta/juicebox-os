@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './index.css';
+//import './index.css';
+
 
 // ✅ Import from local source (not public/)
-import createJuiceboxModule from './wasm/juicebox.mjs';
+import createJuiceboxModule from '../wasm/juicebox.mjs';
 
 (async () => {
   const Module = await createJuiceboxModule();
