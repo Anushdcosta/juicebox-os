@@ -1,11 +1,7 @@
-// src/App.tsx
+import Desktop from './components/Desktop';
+
 function App() {
-  return (
-    <div>
-      <h1>🧃 Juicebox OS</h1>
-      <p>Running WebAssembly kernel...</p>
-    </div>
-  );
+  return <Desktop />;
 }
 
 export default App;
