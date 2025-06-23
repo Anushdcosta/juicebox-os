@@ -2,6 +2,7 @@ import { useState } from "react";
 import TerminalWindow from "./TerminalWindow";
 import Calculator from '../components/Calculator';
 import Notepad from '../components/Notepad';
+import Browser from './browser';
 
 export default function Desktop() {
   const [openApp, setOpenApp] = useState<string | null>(null);
@@ -30,10 +31,18 @@ export default function Desktop() {
             style={{ width: '48px', height: '48px' }}
           />
         </a>
+        <a onClick={() => handleAppOpen('browser')} className="cursor-[default] hover:scale-110 transition-transform background-[none]">
+          <img
+            src="https://img.icons8.com/fluency/48/chrome.png"
+            alt="Browser"
+            style={{ width: '48px', height: '48px' }}
+          />
+        </a>
       </div>
-      {openApp === 'terminal' && <TerminalWindow />}
-      {openApp === 'notepad' && <Notepad />}
-      {openApp === 'calculator' && <Calculator />}
+        {openApp === 'terminal' && <TerminalWindow />}
+        {openApp === 'notepad' && <Notepad />}
+        {openApp === 'calculator' && <Calculator />}
+        {openApp === 'browser' && <Browser onClose={() => setOpenApp(null)} />}
     </div>
   );
 }
