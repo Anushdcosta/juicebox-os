@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "wasm:build": "emcc src/os/main.cpp -o src/wasm/juicebox.mjs -sWASM=1 -sMODULARIZE=1 -sEXPORT_NAME=createJuiceboxModule -sEXPORTED_FUNCTIONS=_hello -sEXPORTED_RUNTIME_METHODS=cwrap,ccall -O2",
+    "wasm:build": "emcc src/os/main.cpp -o src/wasm/juicebox.mjs -sWASM=1 -sMODULARIZE=1 -sEXPORT_NAME=createJuiceboxModule -sEXPORTED_FUNCTIONS=_add,_subtract,_multiply,_divide -sEXPORTED_RUNTIME_METHODS=cwrap,ccall -O2",
     "dev": "npm run wasm:build && vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
+
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
