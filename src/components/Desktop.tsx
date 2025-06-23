@@ -1,5 +1,7 @@
 import { useState } from "react";
 import TerminalWindow from "./TerminalWindow";
+import Calculator from '../components/Calculator';
+import Notepad from '../components/Notepad';
 
 export default function Desktop() {
   const [openApp, setOpenApp] = useState<string | null>(null);
@@ -14,8 +16,24 @@ export default function Desktop() {
         <a onClick={() => handleAppOpen('terminal')} className="cursor-[default] hover:scale-110 transition-transform background-[none]">
           🖥️
         </a>
+        <a onClick={() => handleAppOpen('notepad')} className="cursor-[default] hover:scale-110 transition-transform background-[none]">
+          <img
+            src="https://img.icons8.com/fluency/48/notepad.png"
+            alt="Notepad"
+            style={{ width: '48px', height: '48px' }}
+          />
+        </a>
+        <a onClick={() => handleAppOpen('calculator')} className="cursor-[default] hover:scale-110 transition-transform background-[none]">
+          <img
+            src="https://img.icons8.com/fluency/48/calculator.png"
+            alt="Calculator"
+            style={{ width: '48px', height: '48px' }}
+          />
+        </a>
       </div>
       {openApp === 'terminal' && <TerminalWindow />}
+      {openApp === 'notepad' && <Notepad />}
+      {openApp === 'calculator' && <Calculator />}
     </div>
   );
 }
