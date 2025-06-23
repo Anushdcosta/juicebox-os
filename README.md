@@ -1,54 +1,73 @@
-# React + TypeScript + Vite
+<div align="center">
+  <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="300"/>
+  <h1>💻 Juicebox OS</h1>
+  <h3>🧃 A full fake Operating System — running entirely in your browser</h3>
+  <p>Built with ❤️ by a team of engineering students from Middlesex University Dubai.</p>
+  
+  <a href="https://github.com/Anushdcosta/juicebox-os/stargazers">
+    <img src="https://img.shields.io/github/stars/Anushdcosta/juicebox-os?style=for-the-badge&color=yellow" alt="Stars"/>
+  </a>
+  <a href="https://github.com/Anushdcosta/juicebox-os/forks">
+    <img src="https://img.shields.io/github/forks/Anushdcosta/juicebox-os?style=for-the-badge&color=orange" alt="Forks"/>
+  </a>
+  <a href="https://github.com/Anushdcosta/juicebox-os/issues">
+    <img src="https://img.shields.io/github/issues/Anushdcosta/juicebox-os?style=for-the-badge&color=red" alt="Issues"/>
+  </a>
+  <img src="https://img.shields.io/badge/Build-WASM%20+%20Vite-blueviolet?style=for-the-badge"/>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🧠 What is Juicebox OS?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> **Juicebox OS** is a full-blown *browser-based* operating system simulator — with real compiled programs, a virtual file system, and a retro interface inspired by the early days of computing.
 
-## Expanding the ESLint configuration
+💡 It's not just a fake UI — it actually compiles and runs C++ programs (like a text editor, shell, and more) **in your browser tab** via **WebAssembly**.  
+You’ll find Clippy, a BSOD generator, and even the ability to fake viruses for fun. It’s Windows 98... in JavaScript.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Live Demo (Coming Soon)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Want to test it? A live deployment will be hosted here:
+🔗 **https://juicebox-os.vercel.app**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## ⚙️ Tech Stack
+
+| Layer | Tech |
+|-------|------|
+| 🧠 Core Logic | `C++` → `WebAssembly (WASM)` |
+| 💾 File System | `SQLite` (browser-based) |
+| 🖥️ Shell / UI | `JavaScript`, `HTML`, `CSS` |
+| ⚡ Bundler | `Vite` |
+| 🔌 Emulator | Custom JS terminal shell |
+| 🤖 Extras | Clippy AI, Fake BSODs, Virus simulator |
+
+---
+
+## ✨ Key Features
+
+- 📝 Fully functioning **text editor**
+- 📁 Virtual **file system** with SQLite
+- 🧠 **Compiled apps** in browser memory (C++ → WASM)
+- 🖱️ Window management (drag, resize, minimize)
+- 🧻 Retro **CLI shell**
+- 💀 BSOD & fake virus triggers
+- 🐤 Reimagined **Clippy** for emotional support
+
+---
+
+## 🔧 Installation
+
+
+# Clone the repository
+git clone https://github.com/Anushdcosta/juicebox-os.git
+cd juicebox-os
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run dev
