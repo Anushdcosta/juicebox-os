@@ -5,7 +5,7 @@ interface BrowserProps {
 }
 
 const Browser: React.FC<BrowserProps> = ({ onClose }) => {
-  const [url, setUrl] = useState<string>('https://www.google.com');
+    const [url, setUrl] = useState("https://wikipedia.com/");
 
   const handleGo = () => {
     // Basic URL validation
