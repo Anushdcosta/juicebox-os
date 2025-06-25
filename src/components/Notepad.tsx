@@ -1,4 +1,5 @@
 import React, { useState, useEffect, type ChangeEvent } from 'react';
+import { motion } from "framer-motion";
 
 const Notepad: React.FC = () => {
   const [text, setText] = useState<string>('');
@@ -32,7 +33,13 @@ const Notepad: React.FC = () => {
   };
 
   return ( 
-    <div
+    <motion.div
+    drag
+    dragConstraints={{ left: -100, top: -100, right: 1200, bottom: 700 }}
+    dragElastic={false}
+    dragMomentum={false}
+    className="absolute top-24 left-24 w-[500px] bg-white border border-gray-400 rounded shadow-lg"
+  > <div
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -138,6 +145,8 @@ const Notepad: React.FC = () => {
         }}
       />
     </div>
+    </motion.div>
+    
   );
   
 };

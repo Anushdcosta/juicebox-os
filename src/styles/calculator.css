@@ -1,9 +1,9 @@
-.calculator {  
+ .calculator {    
   /* width: 240px; */
   /* margin: 40px auto; */
   padding: 15px;
   background: #222;
-  color: white;
+  color: rgb(14, 0, 0);
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(0,0,0,0.4);
   font-family: Arial, sans-serif;
@@ -30,7 +30,7 @@ button {
   border: none;
   border-radius: 6px;
   background: #555;
-  color: white;
+  text-decoration-color: black;
   cursor: pointer;
 }
 
@@ -46,3 +46,4 @@ button:hover {
 .zero {
   grid-column: span 2;
 }
+
