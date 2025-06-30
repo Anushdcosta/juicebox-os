@@ -1,82 +1,91 @@
 // src/components/Calculator.tsx
-// @ts-ignore
-import loadWasm from "../wasm/juicebox.mjs";
-import { useEffect, useState } from "react";
-import "../styles/calculator.css";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import WindowControls from "./WindowControls"; // Make sure this file exists
 
 export default function Calculator() {
-  const [Module, setModule] = useState<any>(null);
   const [input, setInput] = useState("");
-  const [operand, setOperand] = useState<number | null>(null);
-  const [operator, setOperator] = useState<string | null>(null);
-  const [result, setResult] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    loadWasm().then(setModule);
-  }, []);
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const key = event.key;
 
-  const handleNumber = (value: string) => {
-    setInput((prev) => prev + value);
-  };
-
-  const handleOperator = (op: string) => {
-    if (!input) return;
-    setOperand(parseInt(input));
-    setOperator(op);
-    setInput("");
-  };
-
-  const calculate = () => {
-    if (!Module || operand === null || !operator || !input) return;
-
-    const a = operand;
-    const b = parseInt(input);
-    let opFunc;
-
-    switch (operator) {
-      case "+": opFunc = Module.cwrap("add", "number", ["number", "number"]); break;
-      case "-": opFunc = Module.cwrap("subtract", "number", ["number", "number"]); break;
-      case "x": opFunc = Module.cwrap("multiply", "number", ["number", "number"]); break;
-      case "÷": opFunc = Module.cwrap("divide", "number", ["number", "number"]); break;
+    if (/\d/.test(key) || ["+", "-", "*", "/"].includes(key)) {
+      setInput((prev) => prev + key);
+    } else if (key === "Enter") {
+      try {
+        const result = eval(input); // 🧠 only for demo use — in real projects use a parser
+        setInput(String(result));
+      } catch {
+        setInput("Error");
+      }
+    } else if (key === "Backspace") {
+      setInput((prev) => prev.slice(0, -1));
     }
-
-    const res = opFunc(a, b);
-    setResult(res.toString());
-    setInput("");
-    setOperator(null);
-    setOperand(null);
   };
 
-  const clear = () => {
-    setInput("");
-    setOperator(null);
-    setOperand(null);
-    setResult("");
+  const handleClick = (value: string) => {
+    if (value === "C") {
+      setInput("");
+    } else if (value === "=") {
+      try {
+        const result = eval(input);
+        setInput(String(result));
+      } catch {
+        setInput("Error");
+      }
+    } else {
+      setInput((prev) => prev + value);
+    }
   };
+
+  const buttons = [
+    "7", "8", "9", "/",
+    "4", "5", "6", "*",
+    "1", "2", "3", "-",
+    "0", ".", "=", "+",
+    "C"
+  ];
 
   return (
-    <div className="calculator">
-      <div className="display">
-        {input || result || "0"}
+    <motion.div
+      drag
+      dragConstraints={{ left: -100, top: -100, right: 1200, bottom: 700 }}
+      dragElastic={false}
+      dragMomentum={false}
+      className="absolute top-24 left-24 w-[300px] bg-black border border-gray-700 rounded shadow-lg"
+    >
+      {/* Header */}
+      <div className="flex bg-gray-800 px-3 py-2 text-white font-mono justify-between items-center">
+        <WindowControls />
+        <p>Calculator</p>
       </div>
-      <div className="buttons">
-        <button onClick={clear}>C</button>
-        <button onClick={() => handleOperator("÷")}>÷</button>
-        <button onClick={() => handleOperator("x")}>x</button>
-        <button onClick={() => handleNumber("7")}>7</button>
-        <button onClick={() => handleNumber("8")}>8</button>
-        <button onClick={() => handleNumber("9")}>9</button>
-        <button onClick={() => handleOperator("-")}>-</button>
-        <button onClick={() => handleNumber("4")}>4</button>
-        <button onClick={() => handleNumber("5")}>5</button>
-        <button onClick={() => handleNumber("6")}>6</button>
-        <button onClick={() => handleOperator("+")}>+</button>
-        <button onClick={() => handleNumber("1")}>1</button>
-        <button onClick={() => handleNumber("2")}>2</button>
-        <button onClick={() => handleNumber("3")}>3</button>
-        <button className="equal" onClick={calculate}>=</button>
-        <button className="zero" onClick={() => handleNumber("0")}>0</button>
+
+      {/* Display */}
+      <div className="p-3 font-mono text-green-400 text-right text-lg">
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          className="w-full bg-black outline-none border-none text-green-400 font-mono text-right"
+          autoComplete="off"
+          spellCheck={false}
+        />
       </div>
-    </div>
+
+      {/* Buttons */}
+      <div className="grid grid-cols-4 gap-2 p-3">
+        {buttons.map((btn, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleClick(btn)}
+            className="bg-gray-700 hover:bg-gray-600 text-black p-2 rounded"
+          >
+            {btn}
+          </button>
+        ))}
+      </div>
+    </motion.div>
   );
 }
